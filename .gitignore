@@ -11,6 +11,7 @@ backend/__pycache__/
 backend/.env
 .env
 !**/.env.example
+!backend/.env.production
 
 # ── Node ────────────────────────────────────────────────────────────────────
 frontend/node_modules/
@@ -28,6 +29,11 @@ frontend/playwright.config.mjs
 frontend/pw-screenshot.spec.mjs
 frontend/screenshot.mjs
 seed.py
+venv/
+docs_output/
+generate_docs.py
+*.pdf
+*.pptx
 
 # ── OS ──────────────────────────────────────────────────────────────────────
 .DS_Store

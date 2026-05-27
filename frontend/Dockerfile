@@ -5,6 +5,11 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
+
+# API URL baked in at build time — nginx proxies /api → backend container
+ARG VITE_API_URL=/api/v1
+ENV VITE_API_URL=$VITE_API_URL
+
 RUN npm run build
 
 FROM nginx:alpine

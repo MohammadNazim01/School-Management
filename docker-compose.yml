@@ -5,10 +5,8 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
       POSTGRES_DB: school_management
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -24,23 +22,25 @@ services:
     container_name: school_backend
     restart: unless-stopped
     env_file: ./backend/.env
+    environment:
+      # Override localhost → db container hostname
+      DATABASE_URL: postgresql://postgres:${DB_PASSWORD:-postgres}@db:5432/school_management
     ports:
       - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
-    volumes:
-      - ./backend:/app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        VITE_API_URL: /api/v1
     container_name: school_frontend
     restart: unless-stopped
     ports:
-      - "3000:80"
+      - "80:80"
     depends_on:
       - backend
 
