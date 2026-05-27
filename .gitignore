@@ -1,50 +1,39 @@
-# Python
-venv/
-__pycache__/
+# ── Python ──────────────────────────────────────────────────────────────────
+backend/venv/
+backend/__pycache__/
+**/__pycache__/
 *.pyc
 *.pyo
-*.pyd
-.Python
 *.egg-info/
-dist/
-build/
 .pytest_cache/
 
-# Environment
+# ── Environment ─────────────────────────────────────────────────────────────
+backend/.env
 .env
-.env.*
-!.env.example
+!**/.env.example
 
-# Database
-*.db
-*.sqlite3
-
-# Alembic
-alembic/versions/*.pyc
-
-# Node
+# ── Node ────────────────────────────────────────────────────────────────────
 frontend/node_modules/
 frontend/dist/
 frontend/.env
 frontend/.env.*
 !frontend/.env.example
 
-# Test artifacts
+# ── Dev artifacts ───────────────────────────────────────────────────────────
 screenshots/
+assets/
 frontend/test-results/
 test-results/
 frontend/playwright.config.mjs
 frontend/pw-screenshot.spec.mjs
 frontend/screenshot.mjs
-
-# Seed / dev scripts
 seed.py
 
-# OS
+# ── OS ──────────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 
-# IDE
+# ── IDE ─────────────────────────────────────────────────────────────────────
 .vscode/
 .idea/
 *.swp
